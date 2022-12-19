@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+string a1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+string a2 = "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA9876543210";
+
+
+string enCode(string txt){
+    int j=0, i = 0;
+    while(txt[i]){
+        while(a2[j]){
+            if(txt[i] == a2[j]){
+                txt[i] = a1[j];
+                break;
+            }
+            j++;
+        }
+        i++;
+    }
+    return txt;
+}
+
+string deCode(string txt1){
+    int j =0, i = 0;
+    while(txt1[i]){
+        while(a1[j]){
+            if(txt1[i] == a1[j]){
+                txt1[i] = a2[j];
+                break;
+            }
+            j++;
+        }
+        i++;
+    }
+    return txt1;
+}
+int main(){
+    string text = "Hello World 123";
+    string deCodedTxt = deCode(text);
+    string old = enCode(deCodedTxt);
+    cout << old << endl << deCodedTxt;
+}
